@@ -22,12 +22,16 @@ export const engine = (nameGames) => {
   else if (nameGames === 'brain-calc') {
     console.log('What is the result of the expression?');
   }
+  else if (nameGames === 'brain-gcd') {
+    console.log('Find the greatest common divisor of given numbers.');
+  }
   while (counter !== 3) {
     if (nameGames === 'brain-even') {
       const randomNumber = getRandomNum(1,100);
       task = readlineSync.question(`Question: ${randomNumber} \nYour answer:`); 
       answer = randomNumber % 2 === 0 ? 'yes' : 'no';
     }
+
     else if (nameGames === 'brain-calc') {
       const arrSymbols = ['-', '+', '*'];
       const firstNum = getRandomNum(1,30);
@@ -44,6 +48,18 @@ export const engine = (nameGames) => {
         answer = firstNum * secondNum;
       }
     }
+
+    else if (nameGames === 'brain-gcd') {
+      const firstNum = getRandomNum(1,100);
+      const secondNum = getRandomNum(1,100);
+      task = Number(readlineSync.question(`Question: ${firstNum} ${secondNum} \nYour answer:`)); 
+      for (let i = 1; i < firstNum + secondNum; i += 1) {
+        if (firstNum % i === 0 && secondNum % i === 0) {
+          answer = i;
+        }
+      }
+    }
+
     if (task === answer) {
       console.log('Correct!');
       counter += 1;
