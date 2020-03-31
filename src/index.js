@@ -25,6 +25,9 @@ export const engine = (nameGames) => {
   else if (nameGames === 'brain-gcd') {
     console.log('Find the greatest common divisor of given numbers.');
   }
+  else if (nameGames === 'brain-progression') {
+    console.log('What number is missing in the progression?');
+  }
   while (counter !== 3) {
     if (nameGames === 'brain-even') {
       const randomNumber = getRandomNum(1,100);
@@ -59,13 +62,28 @@ export const engine = (nameGames) => {
         }
       }
     }
+    
+    else if (nameGames === 'brain-progression') {
+      let firstNum = getRandomNum(1,100);
+      const step = getRandomNum(1,10);
+      let array = [];
+      for (let i = 0; i != 10; i += 1) {
+        array.push(firstNum);
+        firstNum += step;
+      }
+      let num = getRandomNum(1,9);
+      array[num] = '..';
+      answer = array[num - 1] + step;
+      const str = array.join(' ');
+      task = Number(readlineSync.question(`Question: ${str} \nYour answer:`));
+    }
 
     if (task === answer) {
       console.log('Correct!');
       counter += 1;
       quit = 0;
     }
-    else  {
+    else {
       console.log(`${task} is wrong answer ;(. Correct answer was ${answer}.\nLet's try again, ${greetings}!`);
       counter = 0;
       quit += 1;
