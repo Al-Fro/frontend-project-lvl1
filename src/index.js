@@ -1,24 +1,4 @@
 import readlineSync from 'readline-sync';
-import brainCalc from './games/brain-calc.js';
-import brainEven from './games/brain-even.js';
-import brainGcd from './games/brain-gcd.js';
-import brainPrime from './games/brain-prime.js';
-import brainProgression from './games/brain-progression.js';
-
-const getGame = (name) => {
-  switch(name) {
-    case 'brain-calc':
-    return brainCalc();
-    case 'brain-even':
-    return brainEven();
-    case 'brain-gcd':
-    return brainGcd();
-    case 'brain-prime':
-    return brainPrime();
-    case 'brain-progression':
-    return brainProgression();
-  }
-}
 
 export const engine = (game) => {
 
@@ -30,10 +10,10 @@ export const engine = (game) => {
   }
   else { console.log(`Hello, ${greetings}!`) }
 
-  let counter = 0;
+  let counter = 0; 
   let quit = 0;
   while (counter !== 3) {
-    const [description, question, answer] = getGame(game);
+    const [description, question, answer] = game();
     if (counter === 0 && quit === 0) {
       console.log(description);
     } 

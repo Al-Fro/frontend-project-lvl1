@@ -10,9 +10,9 @@ const getPrime = (question) => {
 }
 
 export default () => {
-    const description = 'Answer "yes" if given number is prime. Otherwise answer "no".';
-    const question = getRandomNum(2,100);
-    const answer = getPrime(question);
+  const description = 'Answer "yes" if given number is prime. Otherwise answer "no".';
+  const question = getRandomNum(2,100);
+  const answer = getPrime(question);
     
-    return [description, question, answer];
+  return [description, question, answer];
 }
