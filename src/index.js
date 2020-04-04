@@ -1,84 +1,45 @@
 import readlineSync from 'readline-sync';
-let greetings;
+import brainCalc from './games/brain-calc.js';
+import brainEven from './games/brain-even.js';
+import brainGcd from './games/brain-gcd.js';
+import brainPrime from './games/brain-prime.js';
+import brainProgression from './games/brain-progression.js';
 
-export const hello = ()=> {
+const getGame = (name) => {
+  switch(name) {
+    case 'brain-calc':
+    return brainCalc();
+    case 'brain-even':
+    return brainEven();
+    case 'brain-gcd':
+    return brainGcd();
+    case 'brain-prime':
+    return brainPrime();
+    case 'brain-progression':
+    return brainProgression();
+  }
+}
+
+export const engine = (game) => {
+
   console.log('Welcome to the Brain Games!');
-  greetings = readlineSync.question('May I have you Name?');
-  return `Hello, ${greetings}!`;
-}; 
+  const greetings = readlineSync.question('May I have you Name?');
+  
+  if (game === 'brain-games') {
+    return `Hello, ${greetings}!`;
+  }
+  else { console.log(`Hello, ${greetings}!`) }
 
-const getRandomNum = (min, max) => {
-  return Math.floor(Math.random() * (max - min) + min); 
-};
-
-export const engine = (nameGames) => {
   let counter = 0;
   let quit = 0;
-  let task = 0;
-  let answer = 0;
-  if (nameGames === 'brain-even') {
-    console.log('Answer "yes" if the number is even, otherwise answer "no"');
-  }
-  else if (nameGames === 'brain-calc') {
-    console.log('What is the result of the expression?');
-  }
-  else if (nameGames === 'brain-gcd') {
-    console.log('Find the greatest common divisor of given numbers.');
-  }
-  else if (nameGames === 'brain-progression') {
-    console.log('What number is missing in the progression?');
-  }
   while (counter !== 3) {
-    if (nameGames === 'brain-even') {
-      const randomNumber = getRandomNum(1,100);
-      task = readlineSync.question(`Question: ${randomNumber} \nYour answer:`); 
-      answer = randomNumber % 2 === 0 ? 'yes' : 'no';
-    }
+    const [description, question, answer] = getGame(game);
+    if (counter === 0 && quit === 0) {
+      console.log(description);
+    } 
+    const task = readlineSync.question(`Question: ${question} \nYour answer:`);
 
-    else if (nameGames === 'brain-calc') {
-      const arrSymbols = ['-', '+', '*'];
-      const firstNum = getRandomNum(1,30);
-      const secondNum = getRandomNum(1,30);
-      const arrSymbolsRandom = arrSymbols[Math.floor(Math.random() * arrSymbols.length)];
-      task = Number(readlineSync.question(`Question: ${firstNum} ${arrSymbolsRandom} ${secondNum} \nYour answer:`));
-      if (arrSymbolsRandom === '-') {
-        answer = firstNum - secondNum;
-      }
-      else if (arrSymbolsRandom === '+') {
-        answer = firstNum + secondNum;
-      }
-      else {
-        answer = firstNum * secondNum;
-      }
-    }
-
-    else if (nameGames === 'brain-gcd') {
-      const firstNum = getRandomNum(1,100);
-      const secondNum = getRandomNum(1,100);
-      task = Number(readlineSync.question(`Question: ${firstNum} ${secondNum} \nYour answer:`)); 
-      for (let i = 1; i < firstNum + secondNum; i += 1) {
-        if (firstNum % i === 0 && secondNum % i === 0) {
-          answer = i;
-        }
-      }
-    }
-    
-    else if (nameGames === 'brain-progression') {
-      let firstNum = getRandomNum(1,100);
-      const step = getRandomNum(1,10);
-      let array = [];
-      for (let i = 0; i != 10; i += 1) {
-        array.push(firstNum);
-        firstNum += step;
-      }
-      let num = getRandomNum(1,9);
-      array[num] = '..';
-      answer = array[num - 1] + step;
-      const str = array.join(' ');
-      task = Number(readlineSync.question(`Question: ${str} \nYour answer:`));
-    }
-
-    if (task === answer) {
+    if ((typeof(task) !== undefined && Number(task) === answer) || (task === answer)) {
       console.log('Correct!');
       counter += 1;
       quit = 0;

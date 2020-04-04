@@ -1,6 +1,4 @@
 #!/usr/bin/node
-import {hello, engine} from '../src/index.js';
-
-console.log(hello());
+import {engine} from '../src/index.js';
 
 console.log(engine('brain-even'));
