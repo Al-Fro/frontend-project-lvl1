@@ -1,5 +1,5 @@
 #!/usr/bin/node
-import {engine} from '../src/index.js';
-import brainGcd from '../src/games/brain-gcd.js';
+import engine from '../src/index.js';
+import { description, brainGcd } from '../src/games/brain-gcd.js';
 
-console.log(engine(brainGcd));
+engine(description, brainGcd);

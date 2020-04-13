@@ -27,10 +27,15 @@
   "homepage": "https://github.com/Al-Fro/frontend-project-lvl1#readme",
   "devDependencies": {
     "eslint": "^6.8.0",
-    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-config-airbnb-base": "^14.1.0",
     "eslint-plugin-import": "^2.20.1"
   },
   "dependencies": {
     "readline-sync": "^1.4.10"
-  }
+  },
+  "keywords": [
+    "brain-games",
+    "games",
+    "hexlet"
+  ]
 }

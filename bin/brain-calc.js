@@ -1,5 +1,5 @@
 #!/usr/bin/node
-import {engine} from '../src/index.js';
-import brainCalc from '../src/games/brain-calc.js';
+import engine from '../src/index.js';
+import { brainCalc, description } from '../src/games/brain-calc.js';
 
-console.log(engine(brainCalc));
+engine(description, brainCalc);

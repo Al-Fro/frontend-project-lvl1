@@ -1,5 +1,5 @@
 #!/usr/bin/node
-import {engine} from '../src/index.js';
-import brainProgression from '../src/games/brain-progression.js';
+import engine from '../src/index.js';
+import { description, brainProgression } from '../src/games/brain-progression.js';
 
-console.log(engine(brainProgression));
+engine(description, brainProgression);
