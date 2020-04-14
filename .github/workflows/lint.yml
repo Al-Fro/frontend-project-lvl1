@@ -11,6 +11,6 @@ jobs:
         with:
           node-version: '13.x'
       - run: |
-        make install
-        make lint
+          make install
+          make lint
       
