@@ -1,9 +1,9 @@
 import getRandomNum from '../utils/index.js';
+import engine from '../index.js';
 
+const description = 'What number is missing in the progression?';
 
-export const description = 'What number is missing in the progression?';
-
-export const brainProgression = () => {
+const brainProgression = () => {
   let firstNum = getRandomNum(1, 100);
   const step = getRandomNum(1, 10);
   const array = [];
@@ -17,3 +17,5 @@ export const brainProgression = () => {
   const answer = array[num - 1] + step;
   return [question, answer];
 };
+
+export default () => engine(description, brainProgression);

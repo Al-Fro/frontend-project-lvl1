@@ -1,4 +1,5 @@
 import getRandomNum from '../utils/index.js';
+import engine from '../index.js';
 
 const getAnswer = (firstNum, secondNum, operator) => {
   switch (operator) {
@@ -12,9 +13,9 @@ const getAnswer = (firstNum, secondNum, operator) => {
 };
 
 const operatorSymbols = ['-', '+', '*'];
-export const description = 'What is the result of the expression?';
+const description = 'What is the result of the expression?';
 
-export const brainCalc = () => {
+const brainCalc = () => {
   const firstNum = getRandomNum(1, 30);
   const secondNum = getRandomNum(1, 30);
   const randomOperator = operatorSymbols[Math.floor(Math.random() * operatorSymbols.length)];
@@ -22,3 +23,5 @@ export const brainCalc = () => {
   const answer = getAnswer(firstNum, secondNum, randomOperator);
   return [question, answer];
 };
+
+export default () => engine(description, brainCalc);

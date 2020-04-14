@@ -1,4 +1,5 @@
 import getRandomNum from '../utils/index.js';
+import engine from '../index.js';
 
 const isPrime = (number) => {
   if (number < 2) {
@@ -14,11 +15,13 @@ const isPrime = (number) => {
   return true;
 };
 
-export const description = 'Answer "yes" if given number is prime. Otherwise answer "no".';
+const description = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
-export const brainPrime = () => {
+const brainPrime = () => {
   const question = getRandomNum(-100, 100);
   const answer = isPrime(question) ? 'yes' : 'no';
 
   return [question, answer];
 };
+
+export default () => engine(description, brainPrime);

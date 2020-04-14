@@ -1,4 +1,5 @@
 import getRandomNum from '../utils/index.js';
+import engine from '../index.js';
 
 const getGcd = (firstNum, secondNum) => {
   let temp1 = firstNum;
@@ -9,12 +10,14 @@ const getGcd = (firstNum, secondNum) => {
   return temp1;
 };
 
-export const description = 'Find the greatest common divisor of given numbers.';
+const description = 'Find the greatest common divisor of given numbers.';
 
-export const brainGcd = () => {
+const brainGcd = () => {
   const firstNum = getRandomNum(1, 100);
   const secondNum = getRandomNum(1, 100);
   const question = `${firstNum} ${secondNum}`;
   const answer = getGcd(firstNum, secondNum);
   return [question, answer];
 };
+
+export default () => engine(description, brainGcd);
