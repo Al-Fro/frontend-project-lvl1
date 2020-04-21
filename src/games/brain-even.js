@@ -1,12 +1,13 @@
 import getRandomNum from '../utils/index.js';
-import engine from '../index.js';
+import runEngine from '../index.js';
 
 const description = 'Answer "yes" if the number is even, otherwise answer "no"';
+const isEven = (question) => (question % 2 === 0);
 
-const brainEven = () => {
+const getBrainEven = () => {
   const question = getRandomNum(1, 100);
-  const answer = question % 2 === 0 ? 'yes' : 'no';
+  const answer = isEven(question) ? 'yes' : 'no';
   return [question, answer];
 };
 
-export default () => engine(description, brainEven);
+export default () => runEngine(description, getBrainEven);

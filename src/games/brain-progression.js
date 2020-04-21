@@ -1,5 +1,5 @@
 import getRandomNum from '../utils/index.js';
-import engine from '../index.js';
+import runEngine from '../index.js';
 
 const description = 'What number is missing in the progression?';
 
@@ -18,4 +18,4 @@ const brainProgression = () => {
   return [question, answer];
 };
 
-export default () => engine(description, brainProgression);
+export default () => runEngine(description, brainProgression);

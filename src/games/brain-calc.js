@@ -1,5 +1,5 @@
 import getRandomNum from '../utils/index.js';
-import engine from '../index.js';
+import runEngine from '../index.js';
 
 const getAnswer = (firstNum, secondNum, operator) => {
   switch (operator) {
@@ -7,21 +7,23 @@ const getAnswer = (firstNum, secondNum, operator) => {
       return firstNum - secondNum;
     case '+':
       return firstNum + secondNum;
-    default:
+    case '*':
       return firstNum * secondNum;
+    default:
+      throw new Error(`Unknown operator: "${operator}" `);
   }
 };
 
-const operatorSymbols = ['-', '+', '*'];
+const operators = ['-', '+', '*'];
 const description = 'What is the result of the expression?';
 
-const brainCalc = () => {
+const getBrainCalc = () => {
   const firstNum = getRandomNum(1, 30);
   const secondNum = getRandomNum(1, 30);
-  const randomOperator = operatorSymbols[Math.floor(Math.random() * operatorSymbols.length)];
+  const randomOperator = operators[getRandomNum(0, operators.length - 1)];
   const question = `${firstNum} ${randomOperator} ${secondNum}`;
   const answer = getAnswer(firstNum, secondNum, randomOperator);
   return [question, answer];
 };
 
-export default () => engine(description, brainCalc);
+export default () => runEngine(description, getBrainCalc);

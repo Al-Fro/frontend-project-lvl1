@@ -1,4 +1,4 @@
 #!/usr/bin/node
-import engine from '../src/index.js';
+import runBrainGames from '../src/games/brain-games.js';
 
-engine('brain-games');
+runBrainGames();
