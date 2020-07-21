@@ -4,10 +4,10 @@ import runEngine from '../index.js';
 const description = 'Answer "yes" if the number is even, otherwise answer "no"';
 const isEven = (question) => (question % 2 === 0);
 
-const getBrainEven = () => {
+const getGameData = () => {
   const question = getRandomNum(1, 100);
   const answer = isEven(question) ? 'yes' : 'no';
-  return [question, answer];
+  return [String(question), answer];
 };
 
-export default () => runEngine(description, getBrainEven);
+export default () => runEngine(description, getGameData);

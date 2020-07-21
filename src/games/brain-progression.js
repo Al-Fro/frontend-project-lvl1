@@ -1,21 +1,31 @@
 import getRandomNum from '../utils/index.js';
 import runEngine from '../index.js';
 
-const description = 'What number is missing in the progression?';
+const getProgression = (firstNum, step, lenght) => {
+  const progression = [];
 
-const brainProgression = () => {
-  let firstNum = getRandomNum(1, 100);
-  const step = getRandomNum(1, 10);
-  const array = [];
-  for (let i = 0; i !== 10; i += 1) {
-    array.push(firstNum);
-    firstNum += step;
+  for (let i = 0; i !== lenght; i += 1) {
+    progression.push(firstNum + step * i);
   }
-  const num = getRandomNum(1, 9);
-  array[num] = '..';
-  const question = array.join(' ');
-  const answer = array[num - 1] + step;
-  return [question, answer];
+
+  return progression;
 };
 
-export default () => runEngine(description, brainProgression);
+const description = 'What number is missing in the progression?';
+
+const getGameData = () => {
+  const firstNumProgression = getRandomNum(1, 100);
+  const lenghtProgression = 10;
+  const step = getRandomNum(1, lenghtProgression);
+
+  const progression = getProgression(firstNumProgression, step, lenghtProgression);
+
+  const missingNum = getRandomNum(1, lenghtProgression - 1);
+  progression[missingNum] = '..';
+
+  const question = progression.join(' ');
+  const answer = progression[missingNum - 1] + step;
+  return [question, String(answer)];
+};
+
+export default () => runEngine(description, getGameData);

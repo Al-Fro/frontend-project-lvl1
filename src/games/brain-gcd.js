@@ -12,12 +12,13 @@ const getGcd = (firstNum, secondNum) => {
 
 const description = 'Find the greatest common divisor of given numbers.';
 
-const getBrainGcd = () => {
+const getGameData = () => {
   const firstNum = getRandomNum(1, 100);
   const secondNum = getRandomNum(1, 100);
+
   const question = `${firstNum} ${secondNum}`;
   const answer = getGcd(firstNum, secondNum);
-  return [question, answer];
+  return [question, String(answer)];
 };
 
-export default () => runEngine(description, getBrainGcd);
+export default () => runEngine(description, getGameData);

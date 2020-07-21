@@ -6,8 +6,8 @@ const isPrime = (number) => {
     return false;
   }
 
-  for (let i = 2; i <= number / 2; i += 1) {
-    if (number % i === 0) {
+  for (let divisor = 2; divisor <= number / 2; divisor += 1) {
+    if (number % divisor === 0) {
       return false;
     }
   }
@@ -17,11 +17,11 @@ const isPrime = (number) => {
 
 const description = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
-const getBrainPrime = () => {
+const getGameData = () => {
   const question = getRandomNum(-100, 100);
   const answer = isPrime(question) ? 'yes' : 'no';
 
-  return [question, answer];
+  return [String(question), answer];
 };
 
-export default () => runEngine(description, getBrainPrime);
+export default () => runEngine(description, getGameData);

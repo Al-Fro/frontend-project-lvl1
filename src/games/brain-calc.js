@@ -17,13 +17,15 @@ const getAnswer = (firstNum, secondNum, operator) => {
 const operators = ['-', '+', '*'];
 const description = 'What is the result of the expression?';
 
-const getBrainCalc = () => {
+const getGameData = () => {
   const firstNum = getRandomNum(1, 30);
   const secondNum = getRandomNum(1, 30);
-  const randomOperator = operators[getRandomNum(0, operators.length - 1)];
-  const question = `${firstNum} ${randomOperator} ${secondNum}`;
-  const answer = getAnswer(firstNum, secondNum, randomOperator);
-  return [question, answer];
+
+  const operator = operators[getRandomNum(0, operators.length - 1)];
+
+  const question = `${firstNum} ${operator} ${secondNum}`;
+  const answer = getAnswer(firstNum, secondNum, operator);
+  return [question, String(answer)];
 };
 
-export default () => runEngine(description, getBrainCalc);
+export default () => runEngine(description, getGameData);
