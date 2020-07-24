@@ -11,20 +11,19 @@ const getProgression = (firstNum, step, lenght) => {
   return progression;
 };
 
+const lenghtProgression = 10;
 const description = 'What number is missing in the progression?';
 
 const getGameData = () => {
   const firstNumProgression = getRandomNum(1, 100);
-  const lenghtProgression = 10;
   const step = getRandomNum(1, lenghtProgression);
 
   const progression = getProgression(firstNumProgression, step, lenghtProgression);
+  const missedElementIndex = getRandomNum(1, lenghtProgression - 1);
 
-  const missingNum = getRandomNum(1, lenghtProgression - 1);
-  progression[missingNum] = '..';
-
+  const answer = progression[missedElementIndex];
+  progression[missedElementIndex] = '..';
   const question = progression.join(' ');
-  const answer = progression[missingNum - 1] + step;
   return [question, String(answer)];
 };
 
